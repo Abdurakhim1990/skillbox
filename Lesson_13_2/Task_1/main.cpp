@@ -17,7 +17,7 @@ vector<int> vectorAdd(vector<int> vec, int val)
 int main()
 {
     int n = 0;
-    vector<int> vec = {5};
+    vector<int> vec(0);
     while(n != -1){
         cout << "Input ID for robot: ";
         cin >> n;

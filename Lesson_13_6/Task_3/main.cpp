@@ -14,21 +14,32 @@ vector<int> ShiftVector(vector<int> vec)
 int main()
 {
     cout << "Task_3" << endl;
-    vector<int> database;
+    vector<int> database(20);
     int in;
     cin >> in;
+    int count = 0;
+    bool overflow = false;
     while(in != -1){
-        if(database.size() == 20){
-            database = ShiftVector(database);
-            database[19] = in;
-        } else{
-            database.push_back(in);
+        database[count] = in;
+        count++;
+        if(count == 20){
+            count = 0;
+            overflow = true;
         }
         cin >> in;
     }
     cout << "Database list: ";
-    for(int i = 0; i < database.size(); i++){
-        cout << database[i] << " ";
+    if(overflow){
+        for(int i = 0; i < 20; i++){
+            cout << database[(i + count) % 20] << " ";
+
+        }
+    } else{
+        for(int i = 0; i < count; i++){
+            cout << database[i] << " ";
+        }
     }
+
+
     return 0;
 }

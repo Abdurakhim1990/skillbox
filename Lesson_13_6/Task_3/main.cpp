@@ -8,7 +8,6 @@ vector<int> ShiftVector(vector<int> vec)
     for(int i = 0; i < vec.size() - 1; i++){
         vec[i] = vec[i + 1];
     }
-    vec.pop_back();
     return vec;
 }
 
@@ -21,8 +20,10 @@ int main()
     while(in != -1){
         if(database.size() == 20){
             database = ShiftVector(database);
+            database[19] = in;
+        } else{
+            database.push_back(in);
         }
-        database.push_back(in);
         cin >> in;
     }
     cout << "Database list: ";

@@ -32,14 +32,11 @@ int main()
     if(overflow){
         for(int i = 0; i < 20; i++){
             cout << database[(i + count) % 20] << " ";
-
         }
     } else{
         for(int i = 0; i < count; i++){
             cout << database[i] << " ";
         }
     }
-
-
     return 0;
 }

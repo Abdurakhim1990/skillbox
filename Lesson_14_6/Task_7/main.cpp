@@ -66,8 +66,7 @@ int main()
     bool bubble[12][12];
     InitBubble(bubble);
     bool whole = OutBubble(bubble);
-    int start_x, start_y;
-    int end_x, end_y;
+    int start_x, start_y, end_x, end_y;
     while(whole){
         do {
             cout << "Enter the coordinates of the start of the region: ";

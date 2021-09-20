@@ -12,9 +12,15 @@ int main()
             do{
                 cout << "Enter block size in sector [" << i << "] [" << j << "]: ";
                 cin >> temp;
+<<<<<<< HEAD
             } while (temp < 0 || temp > 10);
             for(int k = 0; k < 10; ++k){
                 space[i][j][k] = (k >= temp ? false : true);
+=======
+            } while (temp < 0 || temp > 9);
+            for(int k = 0; k < 10; ++k){
+                space[i][j][k] = (k > temp ? false : true);
+>>>>>>> 1728e13f789c7e7c76708c7d165806ea255a8129
             }
         }
     }

@@ -18,11 +18,8 @@ bool substr(char * str_a, char * str_b)
 {
     int j = 0;
     bool overlap = false;
-    for(int i = 0; i < strlen(str_a) - strlen(str_b) && overlap == false; ++i){
-        if(*(str_a + i) == *(str_b + j)){
-            j++;
-            overlap = j == strlen(str_b);
-        }
+    for(int i = 0; i < strlen(str_a) && overlap == false; ++i){
+        overlap = (*(str_a + i) == *(str_b + j)? ++j : j = 0) == strlen(str_b);
     }
     return overlap;
 }

@@ -2,12 +2,7 @@
 
 using namespace std;
 
-void Swap(int * a, int * b)
-{
-    int c = *a;
-    *a = *b;
-    *b = c;
-}
+void Swap(int * a, int * b);
 
 int main()
 {
@@ -16,4 +11,11 @@ int main()
     Swap(&a, &b);
     cout << a << " " << b << endl;
     return 0;
+}
+
+void Swap(int * a, int * b)
+{
+    int c = *a;
+    *a = *b;
+    *b = c;
 }

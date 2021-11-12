@@ -6,9 +6,10 @@ void Revers(int * rev, int size_rev);
 
 int main()
 {
-    int mas[10] = {1, 2, 3, 4, 5, 6, 7 , 8, 9, 0};
-    Revers(mas, sizeof (mas)/sizeof (int));
-    for(int i = 0; i < sizeof (mas)/sizeof (int); ++i){
+    int mas[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    int length = sizeof (mas)/sizeof (int);
+    Revers(mas, length);
+    for(int i = 0; i < length; ++i){
         cout << *(mas + i) << " ";
     }
     return 0;

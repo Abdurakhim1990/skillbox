@@ -6,19 +6,26 @@ using namespace std;
 
 int main()
 {
-    ifstream colors;
-    colors.open("D:\\Programs\\QtCreator\\skillbox\\Lesson_19_5\\Task_1_Lesson_19_5\\words.txt");
+    ifstream colors("../Task_1_Lesson_19_5/words.txt");
+    //colors.open;
     string col;
-    string search_col = "green";
+    string search_col = "red";
     int count = 0;
     colors >> col;
-    while(!colors.eof()){
-        if(col == search_col){
-            ++count;
+    if(colors.is_open())
+    {
+        while(!colors.eof()){
+            if(col == search_col){
+                ++count;
+            }
+            colors >> col;
         }
-        colors >> col;
+        colors.close();
+    }else
+    {
+        cout << "The file cannot be opened!" << endl;
     }
-    colors.close();
+
     cout << search_col << " = " << count << endl;
     return 0;
 }

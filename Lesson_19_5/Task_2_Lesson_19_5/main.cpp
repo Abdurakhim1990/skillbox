@@ -6,6 +6,8 @@ using namespace std;
 
 int main()
 {
+    cout << "Task 2. Development of a text file viewer" << endl;
+    cout << "Input name file: ";
     string path_to_file = "../Task_2_Lesson_19_5/";
     string str;
     char buffer[50];

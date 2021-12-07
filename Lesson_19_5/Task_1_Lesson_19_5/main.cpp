@@ -6,8 +6,9 @@ using namespace std;
 
 int main()
 {
-    ifstream colors("../Task_1_Lesson_19_5/words.txt");
-    //colors.open;
+    cout << "Task 1. Development of a program for finding words in a file" << endl;
+    ifstream colors;
+    colors.open("../Task_1_Lesson_19_5/words.txt");
     string col;
     string search_col = "red";
     int count = 0;

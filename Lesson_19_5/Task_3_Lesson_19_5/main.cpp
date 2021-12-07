@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    cout << "Task 3. Implementation of the program for reading the statement" << endl;
     ifstream data_list;
     string first_name;
     string last_name;

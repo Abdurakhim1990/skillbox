@@ -40,6 +40,9 @@ void recordHouseData(House& house);
 void recordFloorData(Floor& floor);
 int setSquare(void);
 bool availabilityBilding(string bild);
+void countSqrVillage(Piece& village,  int& sum_sqr);
+void countSqrHouse(House& house, int& sum_sqr);
+void countSqrFloor(Floor& floor, int& sum_sqr);
 
 int main()
 {
@@ -52,6 +55,11 @@ int main()
         cout << "\n===Parcel N" << i+1 << "===" << endl;
         recordVillageData(village[i]);
     }
+    int sum_square = 0;
+    for(int i = 0; i < village.size(); ++i){
+        countSqrVillage(village[i], sum_square);
+    }
+    cout << "Summ square = " << sum_square << endl;
     return 0;
 }
 
@@ -62,7 +70,7 @@ void recordVillageData(Piece& village)
     cin >> num_hours;
     for(int i = 0; i < num_hours; ++i){
         House house;
-        cout << "   ===House N" << i+1 << "===" << endl;
+        cout << "\n   ===House N" << i+1 << "===" << endl;
         recordHouseData(house);
         village.house.push_back(house);
     }
@@ -75,9 +83,9 @@ void recordVillageData(Piece& village)
         village.barn.square = setSquare();
     }
     village.bath.available = availabilityBilding("   Bath");
-    if(village.barn.available){
-        village.barn.square = setSquare();
-        village.bath.chimney = availabilityBilding("   Chimney");
+    if(village.bath.available){
+        village.bath.square = setSquare();
+        village.bath.chimney = availabilityBilding("      Chimney");
     }
 }
 
@@ -88,7 +96,7 @@ void recordHouseData(House& house)
     cin >> num_floor;
     for(int i = 0; i < num_floor; ++i){
         Floor floor;
-        cout << "      ===Floor N" << i+1 << "===" << endl;
+        cout << "\n      ===Floor N" << i+1 << "===" << endl;
         recordFloorData(floor);
         house.floor.push_back(floor);
     }
@@ -106,27 +114,27 @@ void recordFloorData(Floor& floor)
     floor.height = height;
     floor.sleeping.available = availabilityBilding("         Sleeping");
     if(floor.sleeping.available){
-        cout << "   ";
+        cout << "      ";
         floor.sleeping.square = setSquare();
     }
     floor.kitchen.available = availabilityBilding("         Kitchen");
     if(floor.kitchen.available){
-        cout << "   ";
+        cout << "      ";
         floor.kitchen.square = setSquare();
     }
     floor.bathroom.available = availabilityBilding("         Bathroom");
     if(floor.bathroom.available){
-        cout << "   ";
+        cout << "      ";
         floor.bathroom.square = setSquare();
     }
     floor.childroom.available = availabilityBilding("         Childroom");
     if(floor.childroom.available){
-        cout << "   ";
+        cout << "      ";
         floor.childroom.square = setSquare();
     }
     floor.livingroom.available = availabilityBilding("         Livingroom");
     if(floor.livingroom.available){
-        cout << "   ";
+        cout << "      ";
         floor.livingroom.square = setSquare();
     }
 }
@@ -145,4 +153,25 @@ bool availabilityBilding(string bild)
     cout << bild << " yes/no: ";
     cin >> bilding;
     return (bilding == "yes");
+}
+
+void countSqrVillage(Piece& village,  int& sum_sqr)
+{
+    for(int i = 0; i < village.house.size(); ++i){
+        countSqrHouse(village.house[i], sum_sqr);
+    }
+    sum_sqr += village.garage.square + village.barn.square + village.bath.square;
+}
+
+void countSqrHouse(House& house, int& sum_sqr)
+{
+    for(int i = 0; i < house.floor.size(); ++i){
+        countSqrFloor(house.floor[i], sum_sqr);
+    }
+}
+
+void countSqrFloor(Floor& floor, int& sum_sqr)
+{
+    sum_sqr += floor.sleeping.square + floor.kitchen.square + floor.bathroom.square
+            + floor.childroom.square + floor.livingroom.square;
 }

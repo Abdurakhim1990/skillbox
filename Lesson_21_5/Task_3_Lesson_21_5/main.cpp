@@ -9,90 +9,76 @@ struct Vect{
     double y = 0;
 };
 
-void adding(void);
-void subtracting(void);
-void vectScale(void);
-void lengthing(void);
-void normalizing(void);
+Vect adding(Vect a, Vect b);
+Vect subtracting(Vect a, Vect b);
+Vect vectScale(Vect a, double b);
+double lengthing(Vect a);
+Vect normalizing(Vect a);
 
 int main()
 {
+    Vect a, b, c;
     cout << "Task 3. Implementation of the mathematical vector." << endl;
     string command;
     cout << "Input command: add/subtract/scale/length/normalize: ";
     cin >> command;
-    if(command == "add"){
-        adding();
-    } else if(command == "subtract"){
-        subtracting();
-    } else if(command == "scale"){
-        vectScale();
-    } else if(command == "length"){
-        lengthing();
-    } else if(command == "normalize"){
-        normalizing();
+    cout << "Input coordinates \"X\" and \"Y\" for vector a: ";
+    cin >> a.x >> a.y;
+    if(command == "length"){
+        cout << "Length for vector = " << lengthing(a) << endl;
+    } else{
+        if(command == "add"){
+            cout << "Input coordinates \"X\" and \"Y\" for vector b: ";
+            cin >> b.x >> b.y;
+            c = adding(a, b);
+        } else if(command == "subtract"){
+            cout << "Input coordinates \"X\" and \"Y\" for vector b: ";
+            cin >> b.x >> b.y;
+            c = subtracting(a, b);
+        } else if(command == "scale"){
+            cout << "Input scalar number: ";
+            double b;
+            cin >> b;
+            c = vectScale(a, b);
+        } else if(command == "normalize"){
+            c = normalizing(a);
+        }
+        cout << "c{" << c.x << "; " << c.y << "}\n";
     }
     return 0;
 }
 
-void adding(void)
+Vect adding(Vect a, Vect b)
 {
-    cout << "Input coordinates \"X\" and \"Y\" for vector 1: ";
-    Vect a;
-    cin >> a.x >> a.y;
-    cout << "Input coordinates \"X\" and \"Y\" for vector 1: ";
-    Vect b;
-    cin >> b.x >> b.y;
-    Vect c;
-    c.x = a.x + b.x;
-    c.y = a.y + b.y;
-    cout << "c{" << c.x << "; " << c.y << "}\n";
+    a.x += b.x;
+    a.y += b.y;
+    return a;
 }
 
-void subtracting(void)
+Vect subtracting(Vect a, Vect b)
 {
-    cout << "Input coordinates \"X\" and \"Y\" for vector 1: ";
-    Vect a;
-    cin >> a.x >> a.y;
-    cout << "Input coordinates \"X\" and \"Y\" for vector 1: ";
-    Vect b;
-    cin >> b.x >> b.y;
-    Vect c;
-    c.x = a.x - b.x;
-    c.y = a.y - b.y;
-    cout << "c{" << c.x << "; " << c.y << "}\n";
+    a.x -= b.x;
+    a.y -= b.y;
+    return a;
 }
 
-void vectScale(void)
+Vect vectScale(Vect a, double b)
 {
-    cout << "Input coordinates \"X\" and \"Y\" for vector 1: ";
-    Vect a;
-    cin >> a.x >> a.y;
-    cout << "Input scalar number: ";
-    double b;
-    cin >> b;
-    Vect c;
-    c.x = a.x * b;
-    c.y = a.y * b;
-    cout << "c{" << c.x << "; " << c.y << "}\n";
+    a.x = a.x * b;
+    a.y = a.y * b;
+    return a;
 }
 
-void lengthing(void)
+double lengthing(Vect a)
 {
-    cout << "Input coordinates \"X\" and \"Y\" for vector 1: ";
-    Vect a;
-    cin >> a.x >> a.y;
     double len = sqrt(pow(a.x, 2) + pow(a.y, 2));
-    cout << "Length for vector = " << len << endl;
+    return len;
 }
 
-void normalizing(void)
+Vect normalizing(Vect a)
 {
-    cout << "Input coordinates \"X\" and \"Y\" for vector 1: ";
-    Vect a;
-    cin >> a.x >> a.y;
     double len = sqrt(pow(a.x, 2) + pow(a.y, 2));
     a.x /= len;
     a.y /= len;
-    cout << "Normal vector = a{" << a.x << "; " << a.y << "}\n";
+    return a;
 }

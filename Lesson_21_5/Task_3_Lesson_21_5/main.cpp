@@ -77,7 +77,7 @@ double lengthing(Vect a)
 
 Vect normalizing(Vect a)
 {
-    double len = sqrt(pow(a.x, 2) + pow(a.y, 2));
+    double len = lengthing(a);
     a.x /= len;
     a.y /= len;
     return a;

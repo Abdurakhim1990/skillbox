@@ -25,9 +25,6 @@ int main()
                 book_name_num.erase(it);
             }
             book_name_num.insert(pair<string, string> (last_name, number));
-
-//            map<string, string>::iterator itf = book_name_num.find(last_name);
-//            cout << itf->first << " : " << itf->second << endl;
         } else if(request == 2){
             cout << "Input number: ";
             cin >> number;

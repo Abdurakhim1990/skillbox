@@ -2,12 +2,13 @@
 #include <map>
 
 using namespace std;
+#include <vector>
 
 int main()
 {
     cout << "Task 1. Phone book" << endl;
     map<string, string> book_num_name;
-    map<string, string> book_name_num;
+    map<string, vector<string>> book_name_num;
     string number, last_name;
     while(true){
         int request;
@@ -18,27 +19,18 @@ int main()
             cin >> number;
             cout << "Input last name: ";
             cin >> last_name;
-            book_num_name.insert(pair<string, string> (number, last_name));
-            map<string, string>::iterator it = book_name_num.find(last_name);
-            if(it != book_name_num.end()){
-                number += " " + it->second;
-                book_name_num.erase(it);
-            }
-            book_name_num.insert(pair<string, string> (last_name, number));
+            book_num_name[number] = last_name;
+            book_name_num[last_name].push_back(number);
         } else if(request == 2){
             cout << "Input number: ";
             cin >> number;
-            map<string, string>::iterator it = book_num_name.find(number);
-            if(it != book_name_num.end()){
-                cout << it->second << endl;
-            }
+            cout << book_num_name[number] << endl;
         } else if(request == 3){
             cout << "Input last name: ";
             cin >> last_name;
-            map<string, string>::iterator it = book_name_num.find(last_name);
-            if(it != book_name_num.end()){
-                cout << it->second << endl;
-            }
+            for(int i = 0; i < book_name_num[last_name].size(); ++i)
+                cout << book_name_num[last_name][i] << " ";
+            cout << endl;
         }
     }
     return 0;

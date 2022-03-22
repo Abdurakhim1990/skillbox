@@ -1,0 +1,46 @@
+#pragma once - для однократного включения в проект
+
+============================================
+
+cmake_minimum_required(VERSION 3.5)
+
+project(Task_1 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+//--// Добавить файлы
+add_executable(Task_1 main.cpp operation.h operation.cpp)
+
+============================================
+
+//--// Если файлы закинуть в папки inc и src
+add_executable(Task_1 src/main.cpp inc/operation.h src/operation.cpp)
+
+//--// Добавить директорий к цели в сборке
+target_include_directories(Task_1 PUBLIC inc/)
+
+============================================
+
+//--// При создании дочернего CMAKE
+
+//--// Добавить subdirectory в основной CMAKE
+add_subdirectory(src)
+
+//--// Добавить в дочерний CMAKE
+add_executable(Task_1 main.cpp ${CMAKE_SOURCE_DIR}/inc/operation.h operation.cpp)
+target_include_directories(Task_1 PUBLIC ${CMAKE_SOURCE_DIR}/inc/)
+
+============================================
+
+//--// Объявим собственную переменную MY_INCLUDE_DIR в дочерний CMAKE
+set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/inc)
+add_executable(Task_1 main.cpp ${MY_INCLUDE_DIR}/operation.h operation.cpp)
+target_include_directories(Task_1 PUBLIC ${MY_INCLUDE_DIR}/)
+
+============================================
+
+//--// Можно переносить set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/inc) в основной CMAKE, для глобального доступа
+set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/inc
+
+============================================

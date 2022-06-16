@@ -125,35 +125,32 @@ public:
     }
 
 public:
-    static vector <PhoneBook> controlMenu(vector <PhoneBook> vecPhonebook)
+    static void controlMenu()
     {
+        vector <PhoneBook> vecPhonebook;
         string com = "";
         cout << "Input command: ";
         cin >> com;
-        PhoneControl *phoneControl = new PhoneControl;
+        PhoneControl phoneControl;
 
         while(com != "exit")
         {
             if(com == "add"){
-                vecPhonebook.push_back(phoneControl->addToBook());
+                vecPhonebook.push_back(phoneControl.addToBook());
             } else if(com == "call"){
-                phoneControl->callToContact(vecPhonebook);
+                phoneControl.callToContact(vecPhonebook);
             } else if(com == "sms"){
-                phoneControl->smsToContact(vecPhonebook);
+                phoneControl.smsToContact(vecPhonebook);
             }
             cout << "Input command: ";
             cin >> com;
         }
-        delete phoneControl;
-        return vecPhonebook;
     }
 };
 
 int main()
 {
-    vector <PhoneBook> vecPhonebook;
-
-    vecPhonebook = PhoneControl::controlMenu(vecPhonebook);
+    PhoneControl::controlMenu();
 
     return 0;
 }

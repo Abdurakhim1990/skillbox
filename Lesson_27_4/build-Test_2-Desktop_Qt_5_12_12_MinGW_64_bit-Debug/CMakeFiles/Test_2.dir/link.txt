@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\Test_2.dir/objects.a
+C:\Qt\Qt5.12.12\Tools\mingw730_64\bin\ar.exe qc CMakeFiles\Test_2.dir/objects.a @CMakeFiles\Test_2.dir\objects1.rsp
+C:\Qt\Qt5.12.12\Tools\mingw730_64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Test_2.dir/objects.a -Wl,--no-whole-archive -o Test_2.exe -Wl,--out-implib,libTest_2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Test_2.dir\linklibs.rsp

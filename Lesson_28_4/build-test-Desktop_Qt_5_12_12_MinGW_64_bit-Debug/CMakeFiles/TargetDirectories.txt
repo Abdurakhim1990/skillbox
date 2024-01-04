@@ -1,0 +1,3 @@
+D:/QtCreator/skillbox/Lesson_28_4/build-test-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/CMakeFiles/test.dir
+D:/QtCreator/skillbox/Lesson_28_4/build-test-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/QtCreator/skillbox/Lesson_28_4/build-test-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir

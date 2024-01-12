@@ -1,14 +1,14 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
 #include <thread>
 #include <mutex>
-#include <map>
-#include <vector>
 
 using namespace std;
 
 mutex cout_access;
-multimap<int, string> finish;
+mutex result_access;
+vector<pair<string, int>> result;
 int real_time = 0;
 
 void swimmers_race(string name, int speed)
@@ -29,12 +29,14 @@ void swimmers_race(string name, int speed)
         cout << "Swimmer \"" << name << "\" - distance: " << distance << " meters." << endl;
         cout_access.unlock();
     }
-    finish.insert(pair<int, string> (time, name));
+    result_access.lock();
+    result.push_back(pair<string, int>(name, time));
+    result_access.unlock();
 }
 
 int main()
 {
-    map<string, int> swimmers;
+    vector<pair<string, int>> swim;
     string name;
     int speed;
 
@@ -43,35 +45,23 @@ int main()
         cin >> name;
         cout << "Input swimmer's speed " << endl;
         cin >> speed;
-        swimmers.insert(pair<string, int> (name, speed));
+        swim.push_back(pair<string, int>(name, speed));
     }
-    auto it_swimmer = swimmers.begin();
-    thread swimmer1(swimmers_race, it_swimmer->first, it_swimmer->second);
-    ++it_swimmer;
-    thread swimmer2(swimmers_race, it_swimmer->first, it_swimmer->second);
-    ++it_swimmer;
-    thread swimmer3(swimmers_race, it_swimmer->first, it_swimmer->second);
-    ++it_swimmer;
-    thread swimmer4(swimmers_race, it_swimmer->first, it_swimmer->second);
-    ++it_swimmer;
-    thread swimmer5(swimmers_race, it_swimmer->first, it_swimmer->second);
-    ++it_swimmer;
-    thread swimmer6(swimmers_race, it_swimmer->first, it_swimmer->second);
-    int time = 0;
-    while(finish.size() != 6){
+
+    vector<thread> swimmer;
+    for(int i = 0; i < swim.size(); ++i){
+        swimmer.push_back(thread(swimmers_race, swim[i].first, swim[i].second));
     }
-    cout_access.lock();
+
+    for(thread& t : swimmer){
+        t.join();
+    }
+
     cout << "\nFinished swimmers" << endl;
     int number = 1;
-    for(auto it_finish = finish.begin(); it_finish != end(finish); ++it_finish, ++number){
-        cout << number << ". \"" << it_finish->second <<  " - "<< it_finish->first << " seconds" << endl;
+    for(auto& v : swim){
+        cout << number << ". \"" << v.second <<  " - "<< v.first << " seconds" << endl;
+        ++number;
     }
-    cout_access.unlock();
-    swimmer1.join();
-    swimmer2.join();
-    swimmer3.join();
-    swimmer4.join();
-    swimmer5.join();
-    swimmer6.join();
     return 0;
 }

@@ -17,14 +17,6 @@ public:
     virtual double square() = 0;
     virtual BoundingBoxDimensions dimensions() = 0;
     virtual string type() = 0;
-
-    void printParams(Shape *shape)
-    {
-       std::cout <<"Type: " << shape->type() << endl;
-       std::cout <<"\tSquare: " << shape->square() << endl;
-       std::cout <<"\tWidth: " << shape->dimensions().width << endl;
-       std::cout <<"\tHeight: " << shape->dimensions().height << endl << endl;
-    }
 };
 
 class Circle :public Shape
@@ -122,6 +114,14 @@ public:
     }
 };
 
+void printParams(Shape *shape)
+{
+   std::cout <<"Type: " << shape->type() << endl;
+   std::cout <<"\tSquare: " << shape->square() << endl;
+   std::cout <<"\tWidth: " << shape->dimensions().width << endl;
+   std::cout <<"\tHeight: " << shape->dimensions().height << endl << endl;
+}
+
 int main()
 {
     Shape* shape;
@@ -129,9 +129,9 @@ int main()
     Rectangle r(4, 7);
     Circle c(5);
 
-    shape->printParams(&t);
-    shape->printParams(&r);
-    shape->printParams(&c);
+    printParams(&t);
+    printParams(&r);
+    printParams(&c);
 
     return 0;
 }

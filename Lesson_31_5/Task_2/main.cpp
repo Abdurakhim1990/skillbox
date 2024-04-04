@@ -35,7 +35,7 @@ public:
 
     shared_ptr_toy (const shared_ptr_toy& other)
     {
-        toy = new Toy(*other.toy);
+        toy = other.toy;
         this->count = other.count;
         ++*count;
     }
@@ -44,8 +44,8 @@ public:
         if(toy != nullptr){
             --(*count);
             if(!*count){
-            delete  toy;
-            delete count;
+                delete  toy;
+                delete count;
             }
         }
     }
@@ -58,7 +58,7 @@ public:
         if(toy != nullptr){
             --*this->count;
         }
-        toy = new Toy(*other.toy);
+        toy = other.toy;
         count = other.count;
         ++*count;
         return *this;
@@ -66,13 +66,14 @@ public:
 
     void reset()
     {
-        --(*count);
-        if(*count){
-            toy = nullptr;
-        } else {
-            delete  toy;
-            delete count;
-            toy = nullptr;
+        if(toy != nullptr){
+            --(*count);
+            if(!*count){
+                delete  toy;
+                delete count;
+                toy = nullptr;
+                count = nullptr;
+            }
         }
     }
 

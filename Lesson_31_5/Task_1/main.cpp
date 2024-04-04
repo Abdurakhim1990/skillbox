@@ -31,7 +31,7 @@ public:
 
     void getToy(shared_ptr<Toy> toy)
     {
-        if(lovelyToy != nullptr && toy->getName() == lovelyToy->getName()){
+        if(lovelyToy != nullptr && toy == lovelyToy){
             cout << "I already have this toy." << endl;
         } else if(toy.use_count() > 2){
             cout << "Another dog is playing with this toy." << endl;

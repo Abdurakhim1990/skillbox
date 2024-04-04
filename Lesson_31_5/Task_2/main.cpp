@@ -57,6 +57,10 @@ public:
         }
         if(toy != nullptr){
             --*this->count;
+            if(!*count){
+                delete  toy;
+                delete count;
+            }
         }
         toy = other.toy;
         count = other.count;

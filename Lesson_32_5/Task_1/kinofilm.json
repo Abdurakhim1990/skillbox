@@ -1,0 +1,27 @@
+{
+	"Wrath of Man":
+	{
+		"cast":{
+			"H":				"Jason Statham",
+			"Jan":				"Scott Eastwood",
+			"Bullet":			"Holt McCallany",
+			"Jackson":			"Jeffrey Donovan",
+			"Boy Sweat Dave":	"Josh Hartnett",
+			"Terry":			"Eddie Marsan",
+			"Agent King":		"Andy Garcia",
+			"Dana":				"Niamh Algar",
+			"Dougie":			"Eli Brown",
+			"Mike":				"Darrell D'Silva",
+			"Carlos":			"Laz Alonso",
+			"Boss Blake Halls":	"Rob Delaney",
+			"John":				"Alex Ferns",
+			"Kirsty":			"Lyne Renee"
+		},
+		"category":"action, thriller",
+		"country":"Britain, USA",
+		"date":2021,
+		"director":"Guy Ritchie",
+		"distributed":"Netflix",
+		"producer":			"Ivan Atkinson"
+	}
+}

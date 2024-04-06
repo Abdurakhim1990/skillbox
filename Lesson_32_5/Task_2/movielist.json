@@ -1,0 +1,86 @@
+{
+	"A Beautiful Mind":
+	{
+		"cast":
+		{
+			"Christopher Plummer":"Dr. Rosen",
+			"Ed Harris":"William Parcher",
+			"Jennifer Connelly":"Alicia Nash",
+			"Paul Bettany":"Charles Herman",
+			"Russell Crowe":"John Nash"
+		},
+		"category":"drama",
+		"country":"USA",
+		"date":2001,
+		"director":"Ron Howard",
+		"distributed":"Universal Pictures",
+		"producer":"Brian Grazer"
+	},
+	"Sherlock":
+	{
+		"cast":
+		{
+			"Andrew Scott":"Professor Moriarty",
+			"Benedict Cumberbatch":"Sherlock Holmes",
+			"Martin Freeman":"Dr. John Watson",
+			"Una Stubbs":"Mrs Hudson"
+		},
+		"category":"Drama, Crime, Mystery, Comedy",
+		"country":"UK",
+		"date":2017,
+		"director":"Euros Lyn",
+		"distributed":"Netflix",
+		"producer":"Stephen Moffat"
+	},
+	"The Imitation Game":
+	{
+		"cast":
+		{
+			"Benedict Cumberbatch":"Alan Turing",
+			"Charles Dance":"Commander Denniston",
+			"Keira Knightley":"Joan Clarke",
+			"Mark Strong":"Stewart Menzies",
+			"Matthew Goode":"Hugh Alexander"
+		},
+		"category":"military, drama, history",
+		"country":"UK, USA",
+		"date":2014,
+		"director":"Morten Tyldum",
+		"distributed":"Black Bear Pictures",
+		"producer":"Nora Grossman"
+	},
+	"The Man Who Knew Infinity":
+	{
+		"cast":
+		{
+			"Dev Patel":"Srinivasa Ramanujan",
+			"Devika Bhise":"Janaki",
+			"Jeremy Irons":"G. H. Hardy",
+			"Stephen Fry":"Sir Francis Spring",
+			"Toby Jones":"John Edensor Littlewood"
+		},
+		"category":"drama",
+		"country":"UK",
+		"date":2016,
+		"director":"Matthew Brown",
+		"distributed":"Warner Bros. Pictures",
+		"producer":"Edward R. Pressman"
+	},
+	"Wrath of Man":
+	{
+		"cast":
+		{
+			"Jason Statham":"H",
+			"Scott Eastwood":"Jan",
+			"Holt McCallany":"Bullet",
+			"Jeffrey Donovan":"Jackson",
+			"Josh Hartnett":"Boy Sweat Dave"
+		},
+		"category":"action, thriller",
+		"country":"Britain, USA",
+		"date":2021,
+		"director":"Guy Ritchie",
+		"distributed":"Netflix",
+		"producer":			"Ivan Atkinson"
+	}
+}

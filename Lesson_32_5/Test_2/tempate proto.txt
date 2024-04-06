@@ -1,0 +1,1 @@
+bin\protoc.exe record.proto --cpp_out=.

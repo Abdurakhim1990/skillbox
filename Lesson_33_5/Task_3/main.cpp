@@ -3,104 +3,123 @@
 
 using namespace std;
 
-template<typename T>
+template<typename K, typename V>
+struct RegistryPair
+{
+    K key;
+    V val;
+
+    RegistryPair(K k, V v) : key(k), val(v){}
+};
+
+template<typename K, typename V>
 class Registry
 {
 private:
-    vector<vector<T>> reg;
+    vector<RegistryPair<K, V>> elem;
 
 public:
-    void add(T key, T val)
+    void add(K key, V val)
     {
-        for(int i = 0; i < reg.size(); ++i){
-            if(reg[i][0] == key){
-                reg[i].push_back(val);
-                return;
-            }
-        }
-        vector<T> vec = {key, val};
-        reg.push_back(vec);
+//        for(int i = 0; i < elem.size(); ++i){
+//            if(elem[i][0] == key){
+//                elem[i].push_back(val);
+//                return;
+//            }
+//        }
+        RegistryPair<K, V> vec = {key, val};
+        elem.push_back(vec);
     }
 
-    void remove(T key)
+    void remove(K key)
     {
         int i = 0, j = 0;
-        for(; i < reg.size(); ++i, ++j){
-            if(i != j){
-                reg[j] = reg[i];
-            } else if(reg[i][0] == key){
+        for(; i < elem.size(); ++i, ++j){
+            if(elem[i].key == key){
                 --j;
+            } else {
+                if(i != j){
+                    elem[j] = elem[i];
+                }
             }
         }
-        if(i != j)
-            reg.pop_back();
+        while(i != j){
+            elem.pop_back();
+            ++j;
+        }
     }
 
     void print()
     {
-        for(int i = 0; i < reg.size(); ++i){
-            for(int j = 0; j < reg[i].size(); ++j){
-                cout << reg[i][j] << " ";
-            }
-            cout << endl;
+        for(int i = 0; i < elem.size(); ++i){
+            cout << "Key = " << elem[i].key << " Value = " << elem[i].val << endl;
         }
     }
 
-    vector<T> find(T key)
+    vector<V> find(K key)
     {
-        for(int i = 0; i < reg.size(); ++i){
-            if(reg[i][0] == key){
-                return reg[i];
+        vector<V> vec;
+        for(int i = 0; i < elem.size(); ++i){
+            if(elem[i].key == key){
+                vec.push_back(elem[i].val);
             }
         }
-        vector<T> vec;
         return vec;
     }
 };
 
 int main()
 {
-    Registry<int>registry;
+    Registry<int, double>registry;
     int key = 1;
-    int val = 10;
+    double val = 10.2;
     registry.add(key, val);
     registry.print();
     cout << endl;
 
     key = 2;
-    val = 20;
+    val = 20.8;
     registry.add(key, val);
     registry.print();
     cout << endl;
 
     key = 3;
-    val = 30;
+    val = 30.5;
     registry.add(key, val);
     registry.print();
     cout << endl;
 
     key = 1;
-    val = 40;
+    val = 40.4;
     registry.add(key, val);
     registry.print();
     cout << endl;
 
     key = 2;
-    val = 50;
+    val = 50.3;
     registry.add(key, val);
     registry.print();
     cout << endl;
 
-    vector<int> vec_1 = registry.find(1);
+    key = 1;
+    vector<double> vec_1 = registry.find(key);
+    cout << "For key " << key << " - ";
     for(auto i = 0; i < vec_1.size(); ++i){
         cout << vec_1[i] << " ";
     }
     cout << endl;
     cout << endl;
 
-    registry.remove(1);
+    key = 1;
+    registry.remove(key);
     registry.print();
     cout << endl;
+
+    key = 3;
+    registry.remove(key);
+    registry.print();
+    cout << endl;
+
     return 0;
 }
 
